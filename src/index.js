@@ -24,7 +24,7 @@ app.post("/ticket",async(req,res)=>{
         destination_station: req.body.destination_station,
         train_number: req.body.train_number,
         date: req.body.date,
-        gmail: req.body.gmail,
+        gmail: req.body.gmail, 
         quota: req.body.quota,
         classType: req.body.classType  
     };
