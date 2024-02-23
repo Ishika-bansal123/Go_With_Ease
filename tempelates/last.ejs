@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go to Ease</title>
+    <!-- Removed stylesheet link -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <style>
+        body {
+            background-image: url('hackzz.png'); /* Background image with train and college life */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            font-size: 20px; /* Increase font size */
+            line-height: 1.5; /* Add line spacing */
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            animation: flicker 0.5s infinite alternate; /* Flickering animation */
+            text-align: center; /* Center align the text */
+            text-transform: uppercase; /* Capitalize the text */
+            font-size: 50px; /* Increase font size */
+    
+        }
+        @keyframes flicker {
+            0% {
+                opacity: 1.2;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+        .container {
+            max-width: 800px; /* Enlarge the container */
+            margin: 50px auto; /* Add space from top */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative; /* Positioning for the user icon */
+            /* Relative positioning for user icon */
+            position: relative;
+            padding-top: 50px; /* Adjust padding to accommodate icon */
+        }
+        .user-icon {
+            position: absolute;
+            top: 10px; /* Adjust vertical position */
+            right: 20px; /* Adjust horizontal position */
+            width: 100px; /* Set width */
+            height: 100px; /* Set height */
+            border-radius: 80%; /* Make it circular */
+            background-color: #fff; /* Fill with white color */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"] {
+            width: calc(50% - 10px);
+            margin-right: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            color: #fff;
+            margin-bottom: 10px; /* Add line space */
+        }
+        .form-group input[type="date"] {
+            width: calc(50% - 10px);
+            margin-right: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            color: #fff;
+            margin-bottom: 10px; /* Add line space */
+        }
+        .form-group input[type="button"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .upload-btn {
+            background-color: #007bff; /* Blue color for upload calendar */
+        }
+        .upload-new-btn {
+            background-color: #ffc107;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+             /* Yellow color for upload new */
+        }
+        .notification-panel {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Added user icon -->
+        <div class="user-icon">
+           <a href="user_icon.html"> <img src="userlogo.png" alt="User Icon" height="100" width="80"></a>
+        </div>
+        <h1>GO WITH EASE</h1>
+        <div class="form-group">
+            <!-- Removed Customize Dates button -->
+        </div>
+    <form action="/ticket" method="post">
+        <div class="form-group">
+            <span class="badge">Gmail</span>
+            <br>
+            <input type="text" name="gmail">
+            <br>
+            <span class="badge">classType</span>
+            <br>
+            <input type="text" name="classType">
+            <br>
+            <span class="badge">quota</span>
+            <br>
+            <input type="text" name="quota">
+            <br>
+            <span class="badge">Boarding Station:</span>
+            <br> <!-- Move to the next line -->
+            <input type="text" name="boarding_station">
+            <br>
+            <span class="badge">Destination Station:</span>
+            <br> <!-- Move to the next line -->
+            <input type="text" name="destination_station">
+            <br>
+            <span class="badge">Train Number:</span>
+            <br> <!-- Move to the next line -->
+            <input type="text" name="train_number">
+            <br>
+            <span class="badge">Date:</span>
+            <br> <!-- Move to the next line -->
+            <input type="date" name="date">
+            <br>
+            <!-- <input type="hidden" id="userEmail" name="userEmail" value=""> -->
+            <!-- <input type="button" class="upload-new-btn" value="ADD NEW"> -->
+            <button type="submit" class="upload-new-btn" value="ADD NEW">ADD NEW</button>
+            <!-- <input type="button" class="upload-new-btn" value="CHECK PREVIOUS">
+            <input type="button" class="upload-new-btn" value="EDITS"> -->
+        </div>
+    </form>
+        <div class="notification-panel">
+            <h2>Notifications</h2>
+            <ul>
+              <li><b>10 tickets left!!</b> for Jalandhar Express(12345) on 2024-04-19</li>
+              <li><b>5 tickets left!!</b> for NITJ Express(10000) on 2024-03-21</li>
+          </ul>
+        </div>
+    </div>
+</body>
+</html>
