@@ -26,7 +26,7 @@ app.post("/ticket",async(req,res)=>{
         date: req.body.date,
         gmail: req.body.gmail,
         quota: req.body.quota,
-        classType: req.body.classType
+        classType: req.body.classType 
     };
 
     await TicketModel.insertMany([data]);
