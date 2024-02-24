@@ -8,8 +8,6 @@ const axios = require("axios");
 const flatted = require('flatted');
 const mailSender = require('./utils/mailSender')
 const cron = require('node-cron');
-const flatted = require('flatted'); 
-
 
 const tempelatePath=path.join(__dirname,'../tempelates');
 app.use(express.json());
@@ -48,16 +46,21 @@ app.post("/ticket",async(req,res)=>{
                 date: req.body.date.toString().slice(0, 10),
             },
             headers: {
-                'X-RapidAPI-Key': 'd409e3c2a6msh2561f0116eb817fp135f80jsn965fa50a6d3e',
+                'X-RapidAPI-Key': 'e64d6e4fe4msh8df76f295da07b8p1a38c9jsne1c00f339b51',
                 'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
             }
         };
 
         const result = await axios.request(options);
-
+        // console.log("result is",result.data);
         let flag = false;
-        for(const item of result.data){
-            if(item.date.toString().slice(0, 2) == req.body.date.toString().slice(0, 2)){
+        for(const item of result.data.data){
+            console.log("item date => ", item.date.toString())
+            console.log("req.body - date => ", req.body.date.toString())
+            console.log("item current_status => ", item.current_status.toString())
+            console.log("flag value => ", item.current_status.toString().includes("AVAILABLE"))
+            if(item.date.toString().split("-")[0] == req.body.date.toString().split("-")[2]){
+                
                 if(item.current_status.toString().includes("AVAILABLE")){
                     flag = true;
 
@@ -86,7 +89,7 @@ app.post("/ticket",async(req,res)=>{
                 const mailResponse = await mailSender(req.body.gmail,
                     "Tickets Info",
                     `
-                        Sorry, no Tickets are available for date - ${item.date.toString()}
+                        Sorry, no Tickets are available for date - ${req.body.date.toString()}
                     `
                     );
                 console.log("Email sended Successfully!! => ", mailResponse);
@@ -112,8 +115,6 @@ app.post("/ticket",async(req,res)=>{
     res.render("last");
 })
 
-
-
 const ticketDetails = async (req, res) => {
     try {
         const response = await TicketModel.find({});
@@ -134,7 +135,7 @@ const ticketDetails = async (req, res) => {
                     date: item.date.toString().slice(0, 10),
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'd409e3c2a6msh2561f0116eb817fp135f80jsn965fa50a6d3e',
+                    'X-RapidAPI-Key': 'e64d6e4fe4msh8df76f295da07b8p1a38c9jsne1c00f339b51',
                     'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
                 }
             };
@@ -150,8 +151,8 @@ const ticketDetails = async (req, res) => {
 
             let flag = false;
 
-            for(const item of result.data){
-                if(item.date.toString().slice(0, 2) == req.body.date.toString().slice(0, 2)){
+            for(const item of result.data.data){
+                if(item.date.toString().split("-")[0] == req.body.date.toString().split("-")[2]){
                     if(item.current_status.toString().includes("AVAILABLE")){
                         flag = true;
                         let message = "No";
@@ -192,7 +193,7 @@ const ticketDetails = async (req, res) => {
                     const mailResponse = await mailSender(req.body.gmail,
                         "Tickets Info",
                         `
-                            Sorry, no Tickets are available for date - ${item.date.toString()}
+                            Sorry, no Tickets are available for date - ${req.body.date.toString()}
                         `
                         );
                     console.log("Email sended Successfully!! => ", mailResponse);
